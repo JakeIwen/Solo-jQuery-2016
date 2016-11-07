@@ -1,11 +1,9 @@
 $(document).ready(function() {
 
   $('.color-button').on('click', function(){
-    console.log($(this).attr("data-color"));
     var chosenColor = $(this).attr("data-color");
     addColorBlock(chosenColor);
-    
-
+    updateTally(chosenColor);
   });
 
   function addColorBlock(color) {
@@ -14,8 +12,9 @@ $(document).ready(function() {
   }
 
   function updateTally(color){
-
-
-    $('.' + color).text('Total ' + color + ': ' + );
+    var $el = $('#' + color)
+    var count = $el.text().replace(/\D/g,'');
+    count++;
+    $el.text('Total ' + color + ': ' + count);
   }
 });
